@@ -1,6 +1,6 @@
 # cpsc39-finalProjects
 
-#Book Recommendation Engine
+# Book Recommendation Engine
 
 ## 1. Project Description
 
@@ -52,13 +52,13 @@ I made this because I love reading books, but struggle with finding new books to
     * **'PriorityQueue'**: Needed to rank and retrieve the top recommendations without needing to go through the entire database.
     * **'ArrayList'**: Used to store lists of authors and tags for the books.
 
-    * **Algorithms:**
+* **Algorithms:**
     * **Similarity Score Algorithm**: determines similarity between two books.
-    * ** Retrieval Algorithm**: retrieval method using a heap through the priority queue.
-    * ** Loading Algorithm**: Parses, maps, and merges the data from the 4 respective CSV files(book_tags.csv, books_1.Best_Books_Ever.csv, tags.csv, books.csv)
+    * **Retrieval Algorithm**: retrieval method using a heap through the priority queue.
+    * **Loading Algorithm**: Parses, maps, and merges the data from the 4 respective CSV files(book_tags.csv, books_1.Best_Books_Ever.csv, tags.csv, books.csv)
 ## Future Additions(Notes for myself)
     Look into a continously updating Library--So as many books as possible are included
-    
+
     Experiment with LLMs for reading and improving book recommendations
     
     If I build into a website, add friends and recommendations from friends.
