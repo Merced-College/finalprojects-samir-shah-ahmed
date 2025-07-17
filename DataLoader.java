@@ -8,22 +8,22 @@ public class DataLoader {
     public static Map<String, Book> loadBooks() {
         System.out.println("Loading data from CSV files...");
 
-        // Step 1: Load descriptions from the new file first.
+        //Load descriptions from the new file first.
         Map<String, String> descriptionMap = loadDescriptions();
 
-        // Step 2: Load tags from the original tags.csv.
+        //Load tags from the original tags.csv.
         Map<Integer, String> tagsMap = loadTags();
 
-        // Step 3: Load book-to-tag relationships from book_tags.csv.
+        //Load book-to-tag relationships from book_tags.csv.
         Map<Integer, List<Integer>> bookTagsMap = loadBookTags();
 
-        // Step 4: Load the main book data and combine everything.
+        //Load the main book data and combine everything.
         Map<String, Book> bookLibrary = new HashMap<>();
         try (Scanner scanner = new Scanner(new File("books.csv"))) {
             scanner.nextLine(); // Skip header line
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                // Use a more robust split to handle commas inside titles.
+                // Use a split to handle commas inside titles.
                 String[] parts = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
                 try {
@@ -43,7 +43,7 @@ public class DataLoader {
 
                     Book book = new Book(goodreadsId, title, authors, tagNames);
 
-                    // --- MERGE STEP: Find and set the description for this book. ---
+                    // Merge: Find and set the description for this book.
                     // Clean the title again to match the key in our description map.
                     String cleanTitle = title.replaceAll(" \\(.*\\)$", "");
                     if (descriptionMap.containsKey(cleanTitle)) {
@@ -53,7 +53,7 @@ public class DataLoader {
                     bookLibrary.put(title, book);
 
                 } catch (NumberFormatException e) {
-                    // Ignore lines with parsing errors.
+                    // Ignore lines with errors.
                 }
             }
         } catch (FileNotFoundException e) {
@@ -65,7 +65,7 @@ public class DataLoader {
         return bookLibrary;
     }
 
-    // --- New method to load descriptions ---
+    // to load descriptions
     private static Map<String, String> loadDescriptions() {
         Map<String, String> descriptionMap = new HashMap<>();
         try (Scanner scanner = new Scanner(new File("books_1.Best_Books_Ever.csv"))) {
@@ -86,8 +86,9 @@ public class DataLoader {
         }
         return descriptionMap;
     }
-
-    // --- Original methods (unchanged) ---
+    // to load tags
+    // This method loads tags from the tags.csv file.
+    // It returns a map where the key is the tag ID and the value is the tag name.
     private static Map<Integer, String> loadTags() {
         Map<Integer, String> tagsMap = new HashMap<>();
         try (Scanner scanner = new Scanner(new File("tags.csv"))) {

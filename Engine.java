@@ -2,29 +2,27 @@ import java.util.*;
 
 public class Engine {
 
-    // The main book library, loaded from files.
     private static Map<String, Book> bookLibrary;
 
     public static void main(String[] args) {
-        // --- Data Loading ---
+        //Load the book library from CSV files.
         bookLibrary = DataLoader.loadBooks();
         if (bookLibrary.isEmpty()) {
             System.out.println("Could not load library. Please check for the required CSV files. Exiting.");
             return;
         }
 
-        // --- Setup ---
+        // Setup the recommendations service and user
         RecommendationsService recService = new RecommendationsService();
         User currentUser = new User("Guest");
         Scanner inputScanner = new Scanner(System.in);
 
-        // --- Instructions ---
+        //Instructions for the user
         System.out.println("\nWelcome to the Book Recommender!");
         System.out.println("Loaded " + bookLibrary.size() + " books.");
         System.out.println("---------------------------------");
         printHelp();
-
-        // --- Main Application Loop ---
+        //Main loop to handle user commands
         while (true) {
             System.out.print("> ");
             String commandLine = inputScanner.nextLine();
@@ -50,7 +48,9 @@ public class Engine {
         }
         inputScanner.close();
     }
-
+    // This method handles the rating command.
+    // It retrieves the book title and rating from the command arguments.
+    // If the book is found in the library, it rates the book and informs the user
     private static void handleRating(String[] parts, User user) {
         if (parts.length < 2) {
             System.out.println("Error: Missing arguments. Usage: rate \"Book Title\" 5");
@@ -71,7 +71,9 @@ public class Engine {
             System.out.println("Error: Invalid format. Usage: rate \"Book Title\" 5");
         }
     }
-
+    // This method handles the recommendation command.
+    // It retrieves the user's top recommendations based on their ratings.
+    // If no recommendations are found, it informs the user.
     private static void handleRecommendation(User user, RecommendationsService recService) {
         System.out.println("\nRetrieving your top recommendations...");
         List<Book> recommendations = recService.getRecommendations(user, bookLibrary);
@@ -86,7 +88,9 @@ public class Engine {
         }
     }
 
-    // --- NEW METHOD TO HANDLE THE DESCRIBE COMMAND ---
+    // This method handles the 'describe' command.
+    // It retrieves the book title from the command arguments and prints its description.
+    // If the book is not found, it informs the user.
     private static void handleDescription(String[] parts) {
         if (parts.length < 2) {
             System.out.println("Error: Missing arguments. Usage: describe \"Book Title\"");
@@ -106,7 +110,10 @@ public class Engine {
             System.out.println("Error: Invalid format. Usage: describe \"Book Title\"");
         }
     }
-
+    // This method prints the user's rated books.
+    // It iterates through the user's ratings and prints each book title with its rating.
+    // If the user has not rated any books, it informs them.
+    // It also handles the case where the user has not rated any books yet.
     private static void printUserRatings(User user) {
         System.out.println("\nYour rated books:");
         if (user.getRatings().isEmpty()) {
@@ -117,7 +124,8 @@ public class Engine {
             }
         }
     }
-
+ 
+    // This method prints the available commands and their usage.
     private static void printHelp() {
         System.out.println("\nAvailable Commands:");
         System.out.println("  rate \"Book Title\" <1-5>  - Rate a book (title must be in quotes).");

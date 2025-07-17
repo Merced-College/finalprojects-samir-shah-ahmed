@@ -1,5 +1,7 @@
 import java.util.List;
-
+//class for book object
+//contains book id, title, authors, tags and description
+//provides getters for attributes
 public class Book {
     private final int bookId;
     private final String title;
@@ -41,8 +43,8 @@ public class Book {
 
     @Override
     public String toString() {
-        // Clean the title to remove any trailing year in parentheses
-        String cleanTitle = this.title.replaceAll(" \\(.*\\)$", "");  // Fixed syntax error here
+        // Cleans the title to remove any trailing year in parentheses
+        String cleanTitle = this.title.replaceAll(" \\(.*\\)$", "");  
         String authorString = String.join(", ", this.authors);
         return "'" + cleanTitle + "' by " + authorString;
     }
