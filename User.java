@@ -14,9 +14,9 @@ public class User{
     public void rateBook(String title, int rating){
         ratings.put(title, rating);
     }
-    //getter for username and rating
-    public String getUsername(){
-        return username;
+    //getter for name and rating
+    public String getName(){
+        return name;
     }
     public Map<String, Integer> getRatings(){
         return ratings;

@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.scanner;
 
 public class Engine{
     //the hashmap holds the book library
@@ -31,7 +30,7 @@ public class Engine{
                 } else {
                     System.out.println("Book not found in library.");
             }
-        RecommendationService recService = new RecommendationService();
+        RecommendationsService recService = new RecommendationsService();
 
         if (parts[0].equalsIgnoreCase("recommend")) {
             List<Book> recommendations = recService.getRecommendations(currentUser, bookLibrary);

@@ -1,7 +1,6 @@
-import java,util.List;
+import java.util.List;
 
 public class Book{
-    private final int bookId;
     private final String title;
     private final  List<String> authors;
     private final  List<String> tags;//hold genres 
@@ -11,16 +10,16 @@ public class Book{
         this.title = title;
         this.authors = authors;
         this.tags = tags;
-        this.bookId= bookId;
+        
     }
     //getters for title, author, and gere
     public String getTitle(){
         return title;
     }
-    public String getAuthor(){
-        return author;
+    public List<String> getAuthor(){
+        return authors;
     }
-    public String getTags(){
+    public List<String> getTags(){
         return tags;
     }
     @Override
