@@ -10,7 +10,7 @@ I made this because I love reading books, but struggle with finding new books to
  
  ## 2. Features
 
- **Large Library** Using multiple CSV files of GoodRead collections which I found online from public github repositories(see works cited for repositories) containing tags, descriptions, and books. By putting them together I was able to build a Library which contains over 9,000 books for the user to rate and be recommended.
+ **Large Library** Using multiple CSV files of GoodRead collections which I found online from public github repositories(see report link works cited for repositories) containing tags, descriptions, and books. By putting them together I was able to build a Library which contains over 9,000 books for the user to rate and be recommended.
 
  **Recommendations:** Takes the books that the user has read and provides new books for the user to read based on genre and author.
 
@@ -62,6 +62,9 @@ I made this because I love reading books, but struggle with finding new books to
     Experiment with LLMs for reading and improving book recommendations
     
     If I build into a website, add friends and recommendations from friends.
+ ## Link to full report
+ https://docs.google.com/document/d/17JhYPoSe0XvplPQGOTeSanrZSzeDjpp8ksoa5VGIDsU/edit?usp=sharing
+ 
 
 
 *Made by: Samir Ahmed on 7/16/25*
